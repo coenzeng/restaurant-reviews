@@ -2,17 +2,17 @@ require("dotenv").config();
 const express = require("express");  
 const morgan = require("morgan");
 const db = require("./db");
+const cors = require("cors");
 const app = express();
 
-
+app.use(cors())
 app.use(express.json()) //used for getting json data in the body (using POST request)
 
 app.get("/api/v1/restaurants", async (req, res) => {
 
     try {
     const results = await db.query("select * from restaurants");
-    console.log(results);
-
+    
     res.status(200).json({
         status: "success",
         result: results.rows.length,
@@ -27,16 +27,24 @@ app.get("/api/v1/restaurants", async (req, res) => {
 })
 
 app.get("/api/v1/restaurants/:id", async (req, res) => {
-    console.log(req.params.id);
+
 try{
     const results = await db.query("select * from restaurants where id =$1", [req.params.id])
 
+        const reviews = await db.query(
+      "select * from reviews where restaurant_id = $1",
+      [req.params.id]
+    );
+    console.log(reviews);
+
     res.status(200).json({
-        status: "success",
-        data: {
-            restaurant: "mcdonalds",
-        }
-    })
+      status: "succes",
+      data: {
+        restaurant: restaurant.rows[0],
+        reviews: reviews.rows,
+    
+        },
+    });
 }catch (err){
     console.log(err)
 }
@@ -48,8 +56,6 @@ app.post("/api/v1/restaurants", async (req, res) => {
     try {
         const results = await db.query("INSERT INTO restaurants (name, location, price_range) values ($1, $2, $3) returning *", 
         [req.body.name, req.body.location, req.body.price_range]);
-
-        console.log(results);
 
         res.status(201).json({
             status: "success",
@@ -79,8 +85,7 @@ app.put("/api/v1/restaurants/:id", async (req, res) => {
     } catch (err) {
       console.log(err);
     }
-    console.log(req.params.id);
-    console.log(req.body);
+
   });
 
 //Delete
@@ -92,6 +97,23 @@ app.delete("/api/v1/restaurants/:id", async (req, res) => {
 
         res.status(204).json({
             status: "success"
+        })
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
+    try {
+        const newReview = await db.query(
+            "INSERT INTO reviews(restaurant_id, name, review, rating) values ($1, $2, $3, $4) returning *",
+        [req.params.id, req.body.name, req.body.review, req.body.rating])
+
+        res.status(201).json({
+            status:"success",
+            data: {
+                review: newReview.row[0],
+            }
         })
     }catch(err){
         console.log(err)
