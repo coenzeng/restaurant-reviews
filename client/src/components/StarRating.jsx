@@ -14,4 +14,5 @@ const StarRating = ({ rating }) => {
   }
   return <>{stars}</>;
 };
+
 export default StarRating;
