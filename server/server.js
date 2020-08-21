@@ -38,7 +38,7 @@ try{
     console.log(reviews);
 
     res.status(200).json({
-      status: "succes",
+      status: "success",
       data: {
         restaurant: restaurant.rows[0],
         reviews: reviews.rows,
@@ -85,8 +85,10 @@ app.put("/api/v1/restaurants/:id", async (req, res) => {
     } catch (err) {
       console.log(err);
     }
-
+    console.log(req.params.id);
+    console.log(req.body);
   });
+  
 
 //Delete
 
