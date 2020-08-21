@@ -6,7 +6,7 @@ import RestaurantFinder from "../apis/RestaurantFinder";
 const UpdateRestaurant = (props) => {
   const { id } = useParams();
   let history = useHistory();
-  const { restaurants } = useContext(RestaurantsContext);
+  //const { restaurants } = useContext(RestaurantsContext);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("");
