@@ -1,0 +1,6 @@
+.container{
+    background-image: url(./img/insane_food.jpg);
+    font-family: 'Roboto', sans-serif;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }

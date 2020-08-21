@@ -1,13 +1,13 @@
 import React from 'react'
 import Header from '../components/Header'
-import AddRestaurant from '../components/AddRestaurant'
 import RestaurantList from '../components/RestaurantList'
-import NavBar from '../components/NavBar'
+import NavBar from '../components/NavBar';
+import '../App.css';
 const Home = () => {
     return (
-        <div>
-            <Header/>
+        <div className="container">
             <NavBar/>
+            <Header/>
             <RestaurantList/>
         </div>
     )

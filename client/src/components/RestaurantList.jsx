@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react'
 import RestaurantFinder from "../apis/RestaurantFinder"
 import { RestaurantsContext } from "../context/RestaurantsContext"
 import { useHistory } from "react-router-dom";
-import styles from './css/styles.module.css';
 import cards from './css/cards.module.css';
 
 const RestaurantList = (props) => {
@@ -43,13 +42,13 @@ const RestaurantList = (props) => {
         <div>
                     {restaurants.map((restaurant) => {
                         return(
-                            <div className={cards.cards} onClick={() => handleRestaurantSelect(restaurant.id)}key={restaurant.id}>
+                            <div className={cards.card} onClick={() => handleRestaurantSelect(restaurant.id)}key={restaurant.id}>
                                 <h2>{restaurant.name}</h2>
                                 <h3>{restaurant.location}</h3>
                                 <p>{"$".repeat(restaurant.price_range)}</p>
                                 <p>reviews</p>
-                                <button onClick={(e) => handleUpdate(e, restaurant.id)}classNameName="btn btn-warning">Update</button>
-                                <button onClick={(e) => handleDelete(e, restaurant.id)} classNameName="btn btn-danger">Delete</button>
+                                <button onClick={(e) => handleUpdate(e, restaurant.id)}className="btn btn-warning">Update</button>
+                                <button onClick={(e) => handleDelete(e, restaurant.id)} className="btn btn-danger">Delete</button>
                             </div>
                         )
 
