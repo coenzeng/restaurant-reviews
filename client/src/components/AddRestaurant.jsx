@@ -26,9 +26,8 @@ function AddRestaurant() {
         }
     }
     return (
-        <div className="nb-4">
+        <div className={forms}>
             <form action="">
-                
             
                         <input value={name} onChange={e => setName(e.target.value)} type="text" className={forms} placeholder="name"></input>
 

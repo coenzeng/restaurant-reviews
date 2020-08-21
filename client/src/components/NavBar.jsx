@@ -6,7 +6,7 @@ function NavBar() {
 
     return (
         <ul>
-             <li><Link to="/restaurants/add" className={ styles }>Add Your Restaurant</Link></li>
+             <li><Link to="/restaurants/add" className={ styles }>ADD YOUR RESTUARANT</Link></li>
         </ul>
     )
 }

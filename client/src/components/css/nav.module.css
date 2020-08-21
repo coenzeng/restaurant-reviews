@@ -11,9 +11,11 @@ ul {
   
   li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 25px 25px;
+    font-size: 20px;
+    font-weight: 700;
     text-decoration: none;
   }
 
