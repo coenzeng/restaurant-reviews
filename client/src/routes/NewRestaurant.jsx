@@ -1,5 +1,5 @@
 import React from 'react'
-import AddRestaurant from "../components/AddRestaurant";
+import AddRestaurant from "../components/AddRestaurant/AddRestaurant";
 
 function NewRestaurant() {
     return (

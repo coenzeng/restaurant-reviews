@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { useHistory } from "react-router-dom";
-import RestaurantFinder from '../apis/RestaurantFinder'
-import { RestaurantsContext } from "../context/RestaurantsContext";
-import { forms } from './css/form.module.css';
+import RestaurantFinder from '../../apis/RestaurantFinder'
+import { RestaurantsContext } from "../../context/RestaurantsContext";
+import styles from './AddRestaurant.module.css';
 
 function AddRestaurant() {
     const { addRestaurants } = useContext(RestaurantsContext);
@@ -26,19 +26,19 @@ function AddRestaurant() {
         }
     }
     return (
-        <div className={forms}>
+        <div className={styles.container}>
             <form action="">
             
-                        <input value={name} onChange={e => setName(e.target.value)} type="text" className={forms} placeholder="name"></input>
+                        <input value={name} onChange={e => setName(e.target.value)} type="text" className={styles} placeholder="name"></input>
 
                    
-                        <input value={location} onChange={e => setLocation(e.target.value)} type="text" className={forms} placeholder="location"></input>
+                        <input value={location} onChange={e => setLocation(e.target.value)} type="text" className={styles} placeholder="location"></input>
                    
                     
                         <select 
                         value={priceRange} 
                         onChange={e => setPriceRange(e.target.value)}
-                        className={forms}>
+                        className={styles}>
                             <option disabled>Price Range</option>
                             <option value="1">$</option>
                             <option value="2">$$</option>
@@ -48,7 +48,7 @@ function AddRestaurant() {
 
                         </select>
                     
-                    <button onClick={handleSubmit} type="submit" className={forms}>Add</button>
+                    <button onClick={handleSubmit} type="submit" className={styles}>Add</button>
                
             </form>
         </div>
